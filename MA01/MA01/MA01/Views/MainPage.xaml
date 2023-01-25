@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="MA01.Views.MainPage"
+             xmlns:viewModel="clr-namespace:MA01.ViewModels"
+             x:DataType="viewModel:MainPageViewModel"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Maui;assembly=LiveChartsCore.SkiaSharpView.Maui">
+
+    <ScrollView>
+        <Grid>
+            <lvc:CartesianChart
+                Series="{Binding Series}">
+            </lvc:CartesianChart>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
