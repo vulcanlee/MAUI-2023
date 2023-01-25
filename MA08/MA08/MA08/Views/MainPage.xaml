@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="問安 5 使用 CommunityToolkit.MVVM"
+             x:Class="MA08.Views.MainPage"
+             xmlns:viewModel="clr-namespace:MA08.ViewModels"
+             x:DataType="viewModel:MainPageViewModel"
+             BackgroundColor="LightGray">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="姓氏"
+                FontSize="14"/>
+            <Entry
+                Text="{Binding LastName}"/>
+
+            <Label
+                Text="名字"
+                FontSize="14"/>
+            <Entry
+                Text="{Binding FirstName}"/>
+
+            <Button
+                Text="問安"
+                Command="{Binding GenerateSayHelloCommand}"
+                />
+
+            <!--這裡將會動態顯示輸入的全名-->
+            <Label
+                Text="{Binding FullName}"
+                FontSize="24" TextColor="Green"/>
+
+            <!--這裡將會於按下按鈕之後，才會顯示問安文字-->
+            <Label
+                Text="{Binding SayHello}"
+                FontSize="24" TextColor="Red"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
