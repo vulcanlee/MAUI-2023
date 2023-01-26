@@ -4,6 +4,11 @@
 |-|-|-|
 |MA01|建立 MAUI 專案，加入統計圖套件，顯示圖形|親自動手建立第一個 Prism.Maui 專案 ， 了解整體開發過程|
 |MA08|Hello World 5 CommunityToolkit.MVVM|CommunityToolkit.MVVM 是由微軟在維護的一個開源套件，觀察其在 .NET MAUI 上使用效果|
+|MA47|使用者登入 使用 MVVM 設計模式進行專案開發||
+|*MA48|使用者登入 串接Web API||
+|*MA49|使用者登入 且儲存權杖||
+|*MA50|使用者登入 遮罩設計||
+|*MA51|使用者登入 頁面導航||
 |*MA02|使用 Code Behind 取得裝置畫素與設計尺寸|學習與理解 Code Behind 用法、知道設計尺寸的意義|
 |*MA03|使用點矩陣與SVG圖形，觀察放大效果|了解個平台對於圖片資源的使用與處理方式，並且學會如何加入圖片資源到專案內|
 |*MA04|Hello World 1 採用 Code Behind|體會沒有 MVVM 設計模式所存在的缺點|
@@ -48,11 +53,6 @@
 |*MA44|CollectionView 的應用練習||
 |*MA45|ListView 控制項的功能與特色||
 |*MA46|集合資料CRUD 顯示資料1||
-|*MA47|||
-|*MA48|||
-|*MA49|||
-|*MA50|||
-|*MA51|||
 |*MA52|||
 |*MA53|||
 |*MA54|||
