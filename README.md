@@ -6,9 +6,9 @@
 |MA08|Hello World 5 CommunityToolkit.MVVM|CommunityToolkit.MVVM 是由微軟在維護的一個開源套件，觀察其在 .NET MAUI 上使用效果|
 |MA47|使用者登入：使用 MVVM 設計模式進行專案開發||
 |MA48|使用者登入：串接 Web API||
-|*MA49|使用者登入：遮罩設計||
-|*MA50|使用者登入：且儲存權杖||
-|*MA51|使用者登入：頁面導航||
+|*MA49|使用者登入：且儲存權杖||
+|*MA50|使用者登入：頁面導航||
+|*MA51|使用者登入：遮罩設計||
 |*MA02|使用 Code Behind 取得裝置畫素與設計尺寸|學習與理解 Code Behind 用法、知道設計尺寸的意義|
 |*MA03|使用點矩陣與SVG圖形，觀察放大效果|了解個平台對於圖片資源的使用與處理方式，並且學會如何加入圖片資源到專案內|
 |*MA04|Hello World 1 採用 Code Behind|體會沒有 MVVM 設計模式所存在的缺點|
