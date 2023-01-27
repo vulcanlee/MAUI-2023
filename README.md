@@ -5,8 +5,8 @@
 |MA01|建立 MAUI 專案，加入統計圖套件，顯示圖形|親自動手建立第一個 Prism.Maui 專案 ， 了解整體開發過程|
 |MA08|Hello World 5 CommunityToolkit.MVVM|CommunityToolkit.MVVM 是由微軟在維護的一個開源套件，觀察其在 .NET MAUI 上使用效果|
 |MA47|使用者登入：使用 MVVM 設計模式進行專案開發||
-|MA48|使用者登入：串接 Web API||
-|*MA49|使用者登入：且儲存權杖||
+|MA48|使用者登入：使用 HttpClient 呼叫身分認證 RESTful Web API，並且取得 JWT 存取權杖||
+|MA49|用者登入：透過呼叫 Web API 成功取得存取權杖後，進行檔案讀寫操作||
 |*MA50|使用者登入：頁面導航||
 |*MA51|使用者登入：遮罩設計||
 |*MA02|使用 Code Behind 取得裝置畫素與設計尺寸|學習與理解 Code Behind 用法、知道設計尺寸的意義|

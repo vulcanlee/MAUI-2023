@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{Binding Title}"
+             x:Class="MA47.Views.MainPage"
+             xmlns:viewModel="clr-namespace:MA47.ViewModels"
+             x:DataType="viewModel:MainPageViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Margin="20">
+            <Label Text="帳號"/>
+            <Entry Text="{Binding Account}"/>
+
+            <Label Text="密碼"
+                   Margin="0,20,0,0"/>
+            <Entry Text="{Binding Password}"
+                   IsPassword="True"/>
+
+            <Label Text="{Binding Message}"
+                   Margin="0,20,0,0"
+                   FontSize="20"
+                   TextColor="Red"/>
+
+            <Button Text="登入"
+                    Margin="0,40,0,0"
+                    Command="{Binding LoginCommand}"/>
+            <Button Text="讀取存取權杖"
+                    Margin="0,40,0,0"
+                    Command="{Binding GetLoginTokenCommand}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
