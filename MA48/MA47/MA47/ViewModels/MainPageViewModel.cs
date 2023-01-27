@@ -24,7 +24,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     [RelayCommand]
     async Task Login()
     {
-        APIResult apiResult = await UserAuthentication();
+        APIResult apiResult = await UserAuthenticationAsync();
         if (apiResult.Status == true)
         {
             LoginResponseDto loginResponseDto = JsonConvert
@@ -45,7 +45,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     {
     }
 
-    async Task<APIResult> UserAuthentication()
+    async Task<APIResult> UserAuthenticationAsync()
     {
         APIResult apiResult = null;
         LoginRequestDto loginRequestDto = new LoginRequestDto()
