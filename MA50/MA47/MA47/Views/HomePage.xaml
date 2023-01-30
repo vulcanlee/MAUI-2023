@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="MA50|判斷是否有權仗決定導航頁面"
+             x:Class="MA47.Views.HomePage"
+             xmlns:viewModel="clr-namespace:MA47.ViewModels"
+             x:DataType="viewModel:HomePageViewModel">
+
+    <Grid>
+        <Button Text="登出"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                Command="{Binding LogoutCommand}"
+                />
+    </Grid>
+
+</ContentPage>
