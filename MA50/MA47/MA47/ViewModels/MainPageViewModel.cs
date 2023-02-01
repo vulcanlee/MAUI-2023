@@ -8,6 +8,7 @@ namespace MA47.ViewModels;
 
 public partial class MainPageViewModel : ObservableObject, INavigatedAware
 {
+    private readonly INavigationService navigationService;
     public MainPageViewModel(INavigationService navigationService)
     {
         this.navigationService = navigationService;
@@ -22,7 +23,6 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     [ObservableProperty]
     string message = string.Empty;
     LoginResponseDto responseDto = new LoginResponseDto();
-    private readonly INavigationService navigationService;
 
     [RelayCommand]
     async Task Login()
@@ -35,7 +35,7 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             await WriteLoginResponseAsync();
             Message = $"Token:{responseDto.Token}";
             await Task.Delay(5000);
-            await navigationService.NavigateAsync("/HomePage");
+            await navigationService.NavigateAsync("/NavigationPage/HomePage");
         }
         else
         {

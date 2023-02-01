@@ -41,7 +41,7 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
         {
             CurrentStatus = $"發現 JWT，切換到首頁";
             await Task.Delay(2000);
-            await navigationService.NavigateAsync("HomePage");
+            await navigationService.NavigateAsync("/NavigationPage/HomePage");
         }
         else
         {
