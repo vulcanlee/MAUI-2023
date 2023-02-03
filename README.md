@@ -8,6 +8,7 @@
 |MA48|使用者登入：使用 HttpClient 呼叫身分認證 RESTful Web API，並且取得 JWT 存取權杖||
 |MA49|用者登入：透過呼叫 Web API 成功取得存取權杖後，進行檔案讀寫操作||
 |MA50|使用者登入：判斷是否有權仗決定導航頁面||
+|MA52|解析 .NET MAUI 中 Microsoft.Toolkit.Mvvm 的運作方式||
 |*MA51|使用者登入：遮罩設計||
 |*MA02|使用 Code Behind 取得裝置畫素與設計尺寸|學習與理解 Code Behind 用法、知道設計尺寸的意義|
 |*MA03|使用點矩陣與SVG圖形，觀察放大效果|了解個平台對於圖片資源的使用與處理方式，並且學會如何加入圖片資源到專案內|
@@ -53,7 +54,6 @@
 |*MA44|CollectionView 的應用練習||
 |*MA45|ListView 控制項的功能與特色||
 |*MA46|集合資料CRUD 顯示資料1||
-|*MA52|||
 |*MA53|||
 |*MA54|||
 |*MA55|||
