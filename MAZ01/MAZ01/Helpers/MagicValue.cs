@@ -10,8 +10,12 @@ namespace MAZ01.Helpers
     {
         public const string ApplicationName = ".NET MAUI CRUD 範例";
         public const string HomePage = "HomePage";
-        public const string PageNameOfProduct = "ProductPage";
-        public const string PageNameOfProductDetail = "ProductDetailPage";
+        public const string PageNameSplash = "SplashPage";
+        public const string PageNameLogin = "LoginPage";
+        public const string PageNameProduct = "ProductPage";
+        public const string PageNameProductDetailPage = "ProductDetailPage";
+        public const string PageNameHomePage = "HomePage";
+        public const string PageNameProductDetail = "ProductDetailPage";
         public const string NavigationParameterNameOfProductItem = "ProductItem";
     }
 }

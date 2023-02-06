@@ -1,6 +1,8 @@
 ﻿using Prism.Ioc;
 using MAZ01.ViewModels;
 using MAZ01.Views;
+using MAZ01.Services;
+using MAZ01.Helpers;
 
 namespace MAZ01;
 
@@ -17,6 +19,13 @@ public static class MauiProgram
                 prism.RegisterTypes(container =>
                       {
                           container.RegisterForNavigation<MainPage, MainPageViewModel>();
+                          container.RegisterForNavigation<SplashPage, SplashPageViewModel>();
+                          container.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+                          container.RegisterForNavigation<HomePage, HomePageViewModel>();
+                          container.RegisterForNavigation<ProductPage, ProductPageViewModel>();
+                          container.RegisterForNavigation<ProductDetailPage, ProductDetailPageViewModel>();
+
+                          container.Register<UserService>();
                       })
                      .OnInitialized(() =>
                       {
@@ -26,7 +35,7 @@ public static class MauiProgram
                      {
                          // Navigate to First page of this App
                          var result = await navigationService
-                         .NavigateAsync("NavigationPage/MainPage");
+                         .NavigateAsync($"/{MagicValue.PageNameSplash}");
                          if (!result.Success)
                          {
                              System.Diagnostics.Debugger.Break();
