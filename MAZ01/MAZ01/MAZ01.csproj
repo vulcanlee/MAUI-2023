@@ -53,4 +53,9 @@
     <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.273-pre" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Events\" />
+  </ItemGroup>
+
 </Project>
