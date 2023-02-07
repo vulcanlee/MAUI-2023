@@ -1,5 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AutoMapper;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MAZ01.Dtos;
+using MAZ01.Helpers;
+using MAZ01.Models;
 
 namespace MAZ01.ViewModels;
 
@@ -28,8 +32,10 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
     {
     }
 
-    public void OnNavigatedTo(INavigationParameters parameters)
+    public async void OnNavigatedTo(INavigationParameters parameters)
     {
+        await Task.Delay(2000);
+        await navigationService.NavigateAsync($"/{MagicValue.PageNameLogin}");
     }
     #endregion
 

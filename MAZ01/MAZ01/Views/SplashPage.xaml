@@ -4,7 +4,8 @@
              Title="Page Title"
              x:Class="MAZ01.Views.SplashPage"
              xmlns:viewModel="clr-namespace:MAZ01.ViewModels"
-             x:DataType="viewModel:SplashPageViewModel">
+             x:DataType="viewModel:SplashPageViewModel"
+             BackgroundColor="LightGreen">
 
   <Grid>
   </Grid>

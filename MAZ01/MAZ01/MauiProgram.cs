@@ -11,21 +11,28 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
+        #region AutoMapper 服務註冊
+        builder.Services.AddAutoMapper(c => c.AddProfile<AutoMapping>());
+        #endregion
         builder
-            .UseMauiApp<App>()
+            .UseMauiApp<App>()            
             .UsePrism(prism =>
             {
 
                 prism.RegisterTypes(container =>
                       {
+                          #region View 與 ViewModel 型別註冊
                           container.RegisterForNavigation<MainPage, MainPageViewModel>();
                           container.RegisterForNavigation<SplashPage, SplashPageViewModel>();
                           container.RegisterForNavigation<LoginPage, LoginPageViewModel>();
                           container.RegisterForNavigation<HomePage, HomePageViewModel>();
                           container.RegisterForNavigation<ProductPage, ProductPageViewModel>();
                           container.RegisterForNavigation<ProductDetailPage, ProductDetailPageViewModel>();
+                          #endregion
 
+                          #region 客製服務型別註冊
                           container.Register<UserService>();
+                          #endregion
                       })
                      .OnInitialized(() =>
                       {

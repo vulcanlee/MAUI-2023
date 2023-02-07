@@ -4,7 +4,8 @@
              Title="Page Title"
              x:Class="MAZ01.Views.LoginPage"
              xmlns:viewModel="clr-namespace:MAZ01.ViewModels"
-             x:DataType="viewModel:LoginPageViewModel">
+             x:DataType="viewModel:LoginPageViewModel"
+             BackgroundColor="LightBlue">
 
   <Grid>
   </Grid>

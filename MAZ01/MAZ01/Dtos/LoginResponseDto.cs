@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MAZ01.Dtos
 {
-    public class LoginResponseDto : ICloneabld
+    public class LoginResponseDto : ICloneable
     {
         public int Id { get; set; }
         public string Account { get; set; }
