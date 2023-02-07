@@ -17,5 +17,8 @@ namespace MAZ01.Helpers
         public const string PageNameHomePage = "HomePage";
         public const string PageNameProductDetail = "ProductDetailPage";
         public const string NavigationParameterNameOfProductItem = "ProductItem";
+
+        public const string ApiHost = "https://blazortw.azurewebsites.net";
+        public const string LoginApiEndpoint = $"{ApiHost}/api/Login";
     }
 }

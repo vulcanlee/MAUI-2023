@@ -7,7 +7,49 @@
              x:DataType="viewModel:LoginPageViewModel"
              BackgroundColor="LightBlue">
 
-  <Grid>
-  </Grid>
+    <Grid
+      >
+        <VerticalStackLayout
+            Margin="20"
+            VerticalOptions="Center"
+            Spacing="0">
+            <Label Text="使用者身分驗證"
+                   FontSize="32"
+                   HorizontalOptions="Center"/>
+            <VerticalStackLayout
+                Margin="0,30,0,0">
+                <Label Text="帳號"
+                       TextColor="Gray"
+                       FontSize="14"/>
+                <Entry Text="{Binding Account}"
+                       BackgroundColor="LightGray"/>
+                <Label Text="密碼"
+                       TextColor="Gray"
+                       FontSize="14"/>
+                <Entry Text="{Binding Password}"
+                       BackgroundColor="LightGray"/>
+                <Label Text="{Binding Message}"
+                       IsVisible="{Binding ShowMessage}"
+                       FontSize="20"
+                       Margin="0,20"/>
+                <Button Text="登入"
+                        Margin="0,30,0,0"
+                        Command="{Binding LoginCommand}"/>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+
+        <Grid
+            HorizontalOptions="Fill" VerticalOptions="Fill"
+            IsVisible="{Binding IsBusy}"
+            >
+            <Border BackgroundColor="Black" Opacity="0.3"/>
+            <ActivityIndicator
+                
+                IsRunning="{Binding IsBusy}"
+                HorizontalOptions="Center" VerticalOptions="Center"
+                Color="Red"
+                WidthRequest="150" HeightRequest="150"/>
+        </Grid>
+    </Grid>
 
 </ContentPage>
