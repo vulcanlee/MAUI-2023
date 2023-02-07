@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MAZ01.Helpers;
 using MAZ01.Services;
 
 namespace MAZ01.ViewModels;
@@ -50,7 +51,20 @@ public partial class LoginPageViewModel : ObservableObject, INavigatedAware
             ShowMessage= true;
             Message = $"Token: {userService.APIResult.Payload}";
         }
+        await Task.Delay(2000);
+        Message = $"更新 JWT 中";
+        await Task.Delay(3000);
+        await userService.RefreshTokenAsync();
+        if (userService.APIResult.Status == true)
+        {
+            ShowMessage = true;
+            Message = $"Token: {userService.APIResult.Payload}";
+        }
+
         IsBusy = false;
+
+        await navigationService.NavigateAsync($"/{MagicValue.PageNameHomePage}");
+
     }
     #endregion
 

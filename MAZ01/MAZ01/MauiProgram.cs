@@ -32,6 +32,7 @@ public static class MauiProgram
 
                           #region 客製服務型別註冊
                           container.Register<UserService>();
+                          container.RegisterSingleton<JwtStoreService>();
                           #endregion
                       })
                      .OnInitialized(() =>

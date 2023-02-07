@@ -12,14 +12,14 @@ namespace MAZ01.Services;
 
 public class UserService
 {
-    private readonly JwtTokenHelper jwtTokenHelper;
+    private readonly JwtStoreService jwtStoreService;
 
     public APIResult APIResult { get; set; } = new();
-    public LoginResponseDto LoginResponseDto { get; set; }=new();
+    public LoginResponseDto LoginResponseDto { get; set; } = new();
 
-    public UserService(JwtTokenHelper jwtTokenHelper)
+    public UserService(JwtStoreService jwtStoreService)
     {
-        this.jwtTokenHelper = jwtTokenHelper;
+        this.jwtStoreService = jwtStoreService;
     }
 
     public async Task LoginAsync(string account, string password)
@@ -34,62 +34,64 @@ public class UserService
                 Account = account,
                 Password = password,
             };
+            jwtStoreService.Delete();
             var responseMessage = await client
-                .PostAsJsonAsync<LoginRequestDto>(MagicValue.LoginApiEndpoint, loginRequestDto);
+                .PostAsJsonAsync<LoginRequestDto>(MagicValue.LoginApiEndpoint,
+                loginRequestDto);
+            APIResult = await responseMessage.Content.ReadFromJsonAsync<APIResult>();
             if (responseMessage.IsSuccessStatusCode)
             {
-                APIResult = await responseMessage.Content.ReadFromJsonAsync<APIResult>();
                 if (APIResult.Status == true)
                 {
                     LoginResponseDto = JsonConvert
-                        .DeserializeObject<LoginResponseDto>(APIResult.Payload.ToString());
-                    await jwtTokenHelper.WriteAsync(LoginResponseDto.Token);
+                        .DeserializeObject<LoginResponseDto>(
+                        APIResult.Payload.ToString());
+                    jwtStoreService.SetJwt(LoginResponseDto);
+                    await jwtStoreService.WriteAsync();
                 }
-                else
-                {
-                    await jwtTokenHelper.WriteAsync(string.Empty);
-                }
-            }
-            else
-            {
-                await jwtTokenHelper.WriteAsync(string.Empty);
             }
         }
         catch (Exception ex)
         {
-            APIResult.Status= false;
-            APIResult.Message= ex.Message;
+            APIResult.Status = false;
+            APIResult.Message = ex.Message;
         }
     }
 
-    public async Task<(string users, string message)> GetUsersAsync()
+    public bool Logout()
     {
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtTokenHelper.Token);
-        var responseMessage = await client.GetAsync("http://172.21.192.1:5199/api/JwtAuth/NeedAuth");
-        if (responseMessage.IsSuccessStatusCode)
+        return jwtStoreService.Delete();
+    }
+
+    public async Task RefreshTokenAsync()
+    {
+        try
         {
-            APIResult apiResult = await responseMessage.Content.ReadFromJsonAsync<APIResult>();
-            if (apiResult.Status == true)
+            APIResult = new();
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",
+                jwtStoreService.JwtStore.LoginResponseDto.RefreshToken);
+            var responseMessage = await client
+                .GetAsync(MagicValue.RefreshTokenApiEndpoint);
+            APIResult = await responseMessage.Content
+               .ReadFromJsonAsync<APIResult>();
+            if (responseMessage.IsSuccessStatusCode)
             {
-                List<MyUserDto> myUsersDto = JsonConvert
-                    .DeserializeObject<List<MyUserDto>>(apiResult.Payload.ToString());
-                string result = string.Empty;
-                foreach (var item in myUsersDto)
+                if (APIResult.Status == true)
                 {
-                    result += $"{item.Account},";
+                    LoginResponseDto = JsonConvert
+                        .DeserializeObject<LoginResponseDto>(
+                        APIResult.Payload.ToString());
+                    jwtStoreService.SetJwt(LoginResponseDto);
+                    await jwtStoreService.WriteAsync();
                 }
-                return (result, string.Empty);
             }
-            else
-                return (string.Empty, apiResult.Message);
         }
-        else
+        catch (Exception ex)
         {
-            APIResult apiResult = await responseMessage.Content.ReadFromJsonAsync<APIResult>();
-            Console.WriteLine($"發生錯誤 : {apiResult.Message}");
-            return (string.Empty, apiResult.Message);
+            APIResult.Status = false;
+            APIResult.Message = ex.Message;
         }
     }
 }

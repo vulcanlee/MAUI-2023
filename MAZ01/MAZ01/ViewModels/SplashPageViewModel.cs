@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using MAZ01.Dtos;
 using MAZ01.Helpers;
 using MAZ01.Models;
+using MAZ01.Services;
 
 namespace MAZ01.ViewModels;
 
@@ -11,15 +12,18 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
 {
     #region Field Member
     private readonly INavigationService navigationService;
+    private readonly JwtStoreService jwtStoreService;
     #endregion
 
     #region Property Member
     #endregion
 
     #region Constructor
-    public SplashPageViewModel(INavigationService navigationService)
+    public SplashPageViewModel(INavigationService navigationService,
+        JwtStoreService jwtStoreService)
     {
         this.navigationService = navigationService;
+        this.jwtStoreService = jwtStoreService;
     }
     #endregion
 
@@ -34,8 +38,12 @@ public partial class SplashPageViewModel : ObservableObject, INavigatedAware
 
     public async void OnNavigatedTo(INavigationParameters parameters)
     {
+        await jwtStoreService.ReadAsync();
         await Task.Delay(2000);
-        await navigationService.NavigateAsync($"/{MagicValue.PageNameLogin}");
+        if (string.IsNullOrEmpty(jwtStoreService.JwtStore.LoginResponseDto.Token))
+            await navigationService.NavigateAsync($"/{MagicValue.PageNameLogin}");
+        else
+            await navigationService.NavigateAsync($"/{MagicValue.PageNameHomePage}");
     }
     #endregion
 

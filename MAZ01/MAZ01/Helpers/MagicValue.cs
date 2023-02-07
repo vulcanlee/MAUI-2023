@@ -9,7 +9,6 @@ namespace MAZ01.Helpers
     public class MagicValue
     {
         public const string ApplicationName = ".NET MAUI CRUD 範例";
-        public const string HomePage = "HomePage";
         public const string PageNameSplash = "SplashPage";
         public const string PageNameLogin = "LoginPage";
         public const string PageNameProduct = "ProductPage";
@@ -20,5 +19,6 @@ namespace MAZ01.Helpers
 
         public const string ApiHost = "https://blazortw.azurewebsites.net";
         public const string LoginApiEndpoint = $"{ApiHost}/api/Login";
+        public const string RefreshTokenApiEndpoint = $"{ApiHost}/api/Login/RefreshToken";
     }
 }

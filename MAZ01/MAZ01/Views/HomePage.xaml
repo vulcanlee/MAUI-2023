@@ -4,9 +4,13 @@
              Title="Page Title"
              x:Class="MAZ01.Views.HomePage"
              xmlns:viewModel="clr-namespace:MAZ01.ViewModels"
-             x:DataType="viewModel:HomePageViewModel">
+             x:DataType="viewModel:HomePageViewModel"
+             BackgroundColor="LightPink">
 
   <Grid>
-  </Grid>
+        <Button Text="登出"
+              HorizontalOptions="Center" VerticalOptions="Center"
+              Command="{Binding LogoutCommand}"/>
+    </Grid>
 
 </ContentPage>
