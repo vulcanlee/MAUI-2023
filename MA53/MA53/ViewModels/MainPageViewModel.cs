@@ -15,6 +15,8 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     #endregion
 
     #region Property Member
+    [ObservableProperty]
+    string accessToken = string.Empty;
     #endregion
 
     #region Constructor
@@ -36,10 +38,10 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
         {
             WebAuthenticatorResult authResult = 
                 await WebAuthenticator.Default.AuthenticateAsync(
-                new Uri("http://192.168.31.207:5081/mobileauth/Microsoft"),
+                new Uri("https://192.168.156.79:5084/mobileauth/Microsoft"),
                 new Uri($"{MagicValue.CALLBACK_SCHEME}://"));
 
-            string accessToken = authResult?.AccessToken;
+            AccessToken = authResult?.AccessToken;
 
             // Do something with the token
         }

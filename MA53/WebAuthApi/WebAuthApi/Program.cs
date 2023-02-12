@@ -12,6 +12,8 @@ builder.Services.AddSwaggerGen();
 #region 進行 Microsoft OAhtu 身分驗證的服務註冊
 // https://learn.microsoft.com/zh-tw/aspnet/core/security/authentication/social/microsoft-logins?view=aspnetcore-7.0
 IConfiguration Configuration = builder.Configuration;
+string ClientId = Configuration["Authentication:Microsoft:ClientId"];
+string ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
 
 builder.Services.AddAuthentication(o =>
 {
@@ -20,8 +22,8 @@ builder.Services.AddAuthentication(o =>
     .AddCookie()
     .AddMicrosoftAccount(ms =>
     {
-        ms.ClientId = Configuration["Authentication:Microsoft:ClientId"];
-        ms.ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"];
+        ms.ClientId = ClientId;
+        ms.ClientSecret = ClientSecret;
         ms.SaveTokens = true;
     });
 #endregion
