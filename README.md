@@ -10,6 +10,7 @@
 |MA50|使用者登入：判斷是否有權仗決定導航頁面||
 |MA52|解析 .NET MAUI 中 Microsoft.Toolkit.Mvvm 的運作方式||
 |MA53|使用 WebAuthenticator 進行身分驗證||
+|MA54|在 .NET MAUI 專案內使用 AutoMapper 套件，將 DTO 轉換成為 Model||
 |MAZ01|CRUD 的完整開發範例||
 |*MA51|使用者登入：遮罩設計||
 |*MA02|使用 Code Behind 取得裝置畫素與設計尺寸|學習與理解 Code Behind 用法、知道設計尺寸的意義|
@@ -56,7 +57,6 @@
 |*MA44|CollectionView 的應用練習||
 |*MA45|ListView 控制項的功能與特色||
 |*MA46|集合資料CRUD 顯示資料1||
-|*MA54|||
 |*MA55|||
 |*MA56|||
 |*MA57|||
