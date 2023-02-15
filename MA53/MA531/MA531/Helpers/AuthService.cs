@@ -36,6 +36,7 @@ namespace MA531.Helpers
 #if ANDROID
                     .WithParentActivityOrWindow(Microsoft.Maui.ApplicationModel.Platform.CurrentActivity)
 #endif
+                    .WithUseEmbeddedWebView(true)
                     .ExecuteAsync(cancellationToken);
 
                 return result;
