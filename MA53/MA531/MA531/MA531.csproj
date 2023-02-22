@@ -16,7 +16,7 @@
 
     <!-- App Identifier -->
     <ApplicationId>com.companyname.ma531</ApplicationId>
-    <ApplicationIdGuid>1297b9d9-1f02-403f-b455-b447b032de5e</ApplicationIdGuid>
+    <ApplicationIdGuid>f75ef64e-c3da-4b1e-9aa3-1d55d64f7b74</ApplicationIdGuid>
 
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -49,10 +49,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.49.1" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.50.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.273-pre" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.26.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,6 @@ using Microsoft.Identity.Client;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MA531.ViewModels;
 
@@ -23,6 +22,8 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     #endregion
 
     #region Property Member
+    [ObservableProperty]
+    string graphMessage = "Welcome to Prism for .NET MAUI";
     #endregion
 
     #region Constructor
@@ -42,21 +43,21 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             var authService = new AuthService();
             var result = await authService.LoginAsync(CancellationToken.None);
             var token = result?.IdToken; // AccessToken also can be used
-            
-            #region test
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", result.AccessToken);
-            HttpResponseMessage response = await client
-                .GetAsync("https://graph.microsoft.com/v1.0/me");
-
-            var bar = response.IsSuccessStatusCode;
-            var res = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(res);
-            #endregion
 
             if (token != null)
             {
+                #region 呼叫 Microsoft Graph API
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", result.AccessToken);
+                HttpResponseMessage response = await client
+                    .GetAsync("https://graph.microsoft.com/v1.0/me");
+
+                var bar = response.IsSuccessStatusCode;
+                var res = await response.Content.ReadAsStringAsync();
+                GraphMessage = res;
+                #endregion
+
                 var handler = new JwtSecurityTokenHandler();
                 var data = handler.ReadJwtToken(token);
                 var claims = data.Claims.ToList();
@@ -76,9 +77,9 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
             //await Toast.Make(ex.Message).Show();
         }
     }
-#endregion
+    #endregion
 
-#region Navigation Event
+    #region Navigation Event
     public void OnNavigatedFrom(INavigationParameters parameters)
     {
     }
@@ -86,9 +87,9 @@ public partial class MainPageViewModel : ObservableObject, INavigatedAware
     public void OnNavigatedTo(INavigationParameters parameters)
     {
     }
-#endregion
+    #endregion
 
-#region Other Method
-#endregion
-#endregion
+    #region Other Method
+    #endregion
+    #endregion
 }
